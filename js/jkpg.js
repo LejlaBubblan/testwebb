@@ -25,7 +25,7 @@ function initMap() {
   
   var mapDiv = document.getElementById("map");
   map = new google.maps.Map(mapDiv, {
-    center: { itemLat, itemLng},
+    center: itemLat, itemLng,
     zoom: 11
   
   });
@@ -158,20 +158,12 @@ function getData(items) {
 function addMarker(item) {
     var lat = parseFloat(item.lat);
   var lng = parseFloat(item.lng);
-  var markerIcon = {
-    path: google.maps.SymbolPath.DIAMOND,
-    fillColor: "#000000",
-    fillOpacity: 1, 
-    strokeWeight: 0, 
-    scale: 10
-  };
 
   var marker = new google.maps.Marker({
     
     position: { lat: lat, lng: lng },
     map: map,
     title: item.name,
-    icon: markerIcon
   });
 
   
@@ -217,13 +209,13 @@ function showMarker(item) {
     var websiteButton = "<p><button onclick=\"window.location.href='" + item.website + "'\">Besök webbplatsen</button></p>";
   
     var request = new XMLHttpRequest();
-    request.open("GET", "json/jönköping.json");
+    request.open("GET", "json/jkp.json");
     request.send(null);
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
         var jkpgData = JSON.parse(request.responseText);
-        var selectedMuseum = jkpgData.find(function(jönköping) {
-          return jönköping.jönköping_id === item.id;
+        var selectedMuseum = jkpgData.find(function(jkp) {
+          return jkp.jkp_id === item.id;
         });
   
         if (selectedMuseum) {

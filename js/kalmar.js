@@ -25,7 +25,7 @@ window.addEventListener("load", init)
 function initMap() {
   var mapDiv = document.getElementById("map");
   map = new google.maps.Map(mapDiv, {
-    center: { itemLat, itemLng },
+    center: itemLat, itemLng,
     zoom: 11
   });
 }
@@ -33,7 +33,7 @@ function initMap() {
 //Funktion för begära datahämtningen av museum från SMAPI i Kalmar, och samtidigt koppla Google maps till förfrågningen av datan.
 function requestData() {
   let request = new XMLHttpRequest();
-  request.open("GET", "https://smapi.lnu.se/api/?api_key=" + APIkey + "&debug=true&controller=establishment&method=getAll&descriptions=museum&counties=kalmar län");
+  request.open("GET", "https://smapi.lnu.se/api?api_key=" + APIkey + "&controller=establishment&method=getAll&descriptions=museum&counties=kalmarlän" + "&debug=true", true);
   request.send(null);
 
 

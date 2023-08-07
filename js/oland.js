@@ -26,7 +26,7 @@
   function initMap() {
     var mapDiv = document.getElementById("map");
     map = new google.maps.Map(mapDiv, {
-      center: { itemLat, itemLng },
+      center: itemLat, itemLng,
       zoom: 11
     });
   }
@@ -220,13 +220,13 @@
     var websiteButton = "<p><button onclick=\"window.location.href='" + item.website + "'\">Besök webbplatsen</button></p>";
   
     var request = new XMLHttpRequest();
-    request.open("GET", "json/öland.json");
+    request.open("GET", "json/oland.json");
     request.send(null);
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
         var ölandData = JSON.parse(request.responseText);
-        var selectedMuseum = ölandData.find(function(öland) {
-          return öland.oland_id === item.id;
+        var selectedMuseum = ölandData.find(function(oland) {
+          return oland.oland_id === item.id;
         });
   
         if (selectedMuseum) {

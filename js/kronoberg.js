@@ -9,7 +9,7 @@ var markers = [];
 var map;
 
 //Funktion för vad som laddas in direkt när webbsidan öppnas.
-function init () {
+function init() {
   
   listalista = document.getElementById("lista");
   document.getElementById("description");
@@ -20,13 +20,13 @@ function init () {
   document.getElementById("Konst").addEventListener("click", requestData5);
 
 }
-window.addEventListener("load", init)
+window.addEventListener("load", init);
 
 //Funktion för att hämtning av Google maps.
 function initMap() {
   var mapDiv = document.getElementById("map");
   map = new google.maps.Map(mapDiv, {
-    center: { itemLat, itemLng},
+    center: itemLat, itemLng,
     zoom: 11
   });
 }
